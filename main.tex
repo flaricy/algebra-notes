@@ -92,201 +92,340 @@
 %----------------------------------------------------------------------------------------
 
 \chapterimage{head2.png} % Chapter heading image
-\chapter{Convex Sets}
-\section{Convexity}
-\subsection{Cone}
-
-\begin{tikzcd}
-	& x & y \\
-	\bullet && \beta
-	\arrow["\psi"', color={rgb,255:red,214;green,92;blue,214}, from=1-2, to=2-1]
-\end{tikzcd}\
-
-\begin{definition}[Cone]
-A set $K \in \R^n$, when $x \in K $ implies $\alpha x \in K$.
-\end{definition}
-A non convex cone can be hyper-plane.\\
-For convex cone $x + y \in K, \forall x,y \in K$.\\
-Cone don't need to be "pointed". e.g. \\
-Direct sums of cones $C_1 + C_2 = \{ x = x_1+x_2 | x_1 \in C_1, x_2 \in C_2 \}$.\\
-\begin{example}
-$S_1^n  \{ X | X=X^n ,\lambda(x) \ge 0\}$\\
-A matrix with positive eigenvalues.
-\end{example}
-
-\subsubsection{Operations preserving convexity}
-\begin{itemize}
-\item[Intersection] $C  \cap_{i \in \mathbb{I}}C_i$
-\item[Linear map] Let $A : \mathbb{R}^n \to  \R^n$ be a linear map. If $C \in \R^n$ is convex, so is $A(C) = \{Ax \forall x \in C \}$
-\item[Inverse image] $A^{-1}(D) = \{ x \in \R |Ax \in D \}$
-\end{itemize}
-
-\subsubsection{Operations that induce convexity}
-Convex hull on $S = \cap \{C | S\in C, C is convex\}$\\
-\begin{example}
-$Co \{ x_1,x_2,\cdots,x_m\} = \{ \sum_{i=1}^m \alpha_i x_i | \alpha \in \delta_m \}$
-\end{example}
-For a convex set $x \in C \Rightarrow x = \sum \alpha_i x_i$. 
-\begin{theorem}[Carathéodory's theorem]
-If a point $x \in \R^d$ lies in the convex hull of a set $P$, there is a subset $P'$ of $P$ consisting of $d + 1$ or fewer points such that $x$ lies in the convex hull of $P'$. Equivalently, x lies in an r-simplex with vertices in P.
-\end{theorem}
-
-\section{Convex Functions}
-\begin{definition}[Convex function]
-Let $C \in \R^n$ be convex, $f:C \to \R$ is convex on f if $x,y \in C \times C$. $\forall \alpha \in (0,1)$, $f(\alpha x + (1-\alpha) y) \le f(\alpha x) + f((1-\alpha) y)$
-\end{definition}
-
-\begin{definition}[Strictly Convex function]
-Let $C \in \R^n$ be convex, $f:C \to \R$ is strictly convex on f if $x,y \in C \times C$. $\forall \alpha \in (0,1)$, $f(\alpha x + (1-\alpha) y) \langle f(\alpha x) + f((1-\alpha) y)$
-\end{definition}
-
-\begin{definition}[Strongly convex]
-$f:C \to \R$ is strongly convex with modules $u \ge 0$ if $f - \frac{1}{2}u || \cdot ||^2$ is convex.
-\end{definition}
-Interpretation: There is a convex quadratic $\frac{1}{2}u || \cdot ||^2$ that lower bounds f.
-\begin{example}
-$\min_{x \in C} f(x) \leftrightarrow \min \bar{f}(x)$
-Useful to turn this into an unconstrained problem. \\
-$$\bar{f}(x) = \begin{cases}
-f(x) \quad if x \in C \\
-\infty \quad  elsewhere
-\end{cases}$$
-\end{example}
+\chapter{Group Theory}
+\section{Groups and subgroups}
 \begin{definition}
-A function $f : \R^n \to \R \cup \infty \ \bar{\R}$ is convex if $x,y \in \R^n \times \R^n$, $\forall x,y , \bar{f}(\alpha x + (1-\alpha) y) \le f(\alpha x) + f((1-\alpha) y)$
+	[direct product] Let $(G, *)$ and $(H, \circ )$ be groups, then we may form a new group structure
+	on $G \times H$ with group operation given by 
+	\[(g, h) \star (g', h') = (g*g', h\circ h') \]
+	This is called the {\bf direct product} of G and H.
 \end{definition}
-Definition 1 is equivalent to definition 2 if $f(x) = \infty$.
-\begin{example}
-$f(x) = \sup_{j \in J} f_j(x)$
-\end{example}
 
-\subsection{Epigraph} 
-\begin{definition}[Epigraph]
-For $f: \R^n \rightarrow \bar{R}$, its epigraph $epi(f) \in \R^{n+1} is the set epi(f) \{ (x,\alpha) | f(x) \in \alpha \}$
+\subsection{Important Examples of Groups} 
+\begin{definition}
+	[Dihedral groups 二面体群] \[D_{2n} = \text{symmetric group of a reguler n-gon}\]
+	It can be rewritten as 
+	\[D_{2n} = \langle r,s | r^n = 1, s^2 = 1, rsr = s^{-1}\rangle \]
 \end{definition}
-Next: a function is convex i.f.f. its epigraph is convex.
 
 \begin{definition}
-A function $f : C \rightarrow \R, C \in \R^n$ is convex if $\forall x, y \in C$, $f(ax + (1-a)x) \le af(x) + (1-a)f(x) \quad \forall a \in (0,1)$.\\ 
-Strict convex: $x \neq y \Rightarrow f(ax + (1-a)x) \le af(x) + (1-a)f(x) $
-\end{definition}
-\begin{remark}
-$f$ is convex $\Rightarrow$ $-f$ is concave.
-\end{remark}
-Level set: $S_{\alpha}f = \{ x | f(x) \le \alpha \}$.\\ 
-$S_{\alpha}f$ is convex $\Leftrightarrow$ $f$ is convex. \\
-\begin{definition}[Strongly convex]
-$f : C \rightarrow \R$ is strongly convex with modules $\mu$ if $\forall x, y \in C$, $\forall \alpha \in (0,1)$, $f(ax + (1-a)x) \le af(x) + (1-a)f(x) - \frac{1}{2\mu}\alpha(1- \alpha) \|x-y\|^2$.
+	[Permutation Groups] Let $\Omega$ be a set. The set 
+	\[S_\Omega = \{\text{bijections } \sigma: \Omega \xrightarrow{\thicksim} \Omega\}\]
+	admits a group structure:
+	\begin{itemize}
+		\item the group operation is composition
+		\item the identity element is $id$
+		\item the inverse of the element $\sigma$ is the inverse map.
+	\end{itemize}
+	This $S_\Omega$ is called the symmetry group or the permutation group of $\Omega$.
+	When $\Omega = \{1,2 ,...,n\}$, we write $S_n$ instead.
 \end{definition}
 
-\begin{remark}
-\begin{itemize}
-\item $f$ is 2nd-differentiable, $f$ ix \cvx $\iff$ $\nabla^2f(x) \rangle  0$.
-\item $f$ is strongly \cvx $\iff$ $\nabla^2f(x) \rangle  \mu I$ $\iff$ $x \ge \mu$
-\end{itemize}
-\end{remark}
-\begin{definition}[2]
-$f : \R^n \to \bar{\R} $ is \cvx  if $x, y  \in \R , \alpha \in (0,1), f(ax + (1-a)x) \le af(x) + (1-a)f(x)$.  
+\begin{definition}
+	[cyclic groups] A group $H$ is called cyclic if it can be generated by one element $x$, i.e.
+	\[H = \langle x\rangle \]	
 \end{definition}
-The effective domain of $f$ is $dom f = \{x | f(x) \langle + \infty \}$ 
-\begin{example}[ludcator function]
-$\delta_c(x) = \begin{cases}
-0 \quad  x \in C \\
-+ \infty \quad elsewhere
-\end{cases}$.\\
-$dom \space \delta_c(x) = C$
-\end{example}
-\begin{definition}[Epigraph]
-The epigraph of f is $epi \space f = \{(x,\alpha) | f(x) \le \alpha\}$
+
+\begin{lemma}
+	There are 2 kinds of cyclic groups up to isomorphism. \\
+	(1) $H \cong \textbf{Z}_n$ \\
+	(2) $H \cong \textbf{Z}$
+\end{lemma}
+
+\begin{definition}
+	[The quaternion group] 
+	\[Q_8 = \{1,-1,i,-i,j,-j,k,-k\}\]
 \end{definition}
-The graph of $epi \space f$ is $\{ (x,f(x) | x \in dom \space f\}$.
-\begin{definition}[III]
-A function $f : \R^n \to \bar{\R}$ is %\cvx  if $\epi \space f $ is \cvx
+
+\section{cosets, Lagrange theorem, quotient groups}
+\subsection{Conjugation, normal subgroups, and quotient groups.}
+\begin{definition}
+	[conjugate] Let $a, g \in G$, then $gag^{-1}$ is called the {\bf conjugate of $a$ by $g$}. 
 \end{definition}
-\begin{theorem}
-$f : \R^n \to \bar{\R}$ is \cvx  $\iff$ $\forall x,y \in \R^n, \alpha \in (0,1), f(ax + (1-a)x) \le af(x) + (1-a)f(x)$.
-\end{theorem}
+\begin{definition}
+	[定义-命题] If $H$ is a subgroup of $G$ and $g \in G$, then $gHg^{-1}$
+	:= $\{ghg^{-1}
+	| h \in H\}$ is a
+	subgroup, called the conjugate of H by g
+\end{definition}
 \begin{proof}
-$\Rightarrow$ take $x,y \in dom \space f$, $(x,f(x)) \in epi \space f$,$(y,f(y)) \in epi \space f$.
+	We just need to verify that $\forall a,b \in H$, $gag^{-1}\cdot(gbg^{-1})^{-1} \in gHg^{-1}$. 
 \end{proof}
 
-\begin{example}[Distance]
-Distance to a \cvx  set $d_c(x) = \inf \{ \| z-x \| | z \in C \}$. Take any two sequence $\{ y_k\} and \{ \bar{y}_k\} \subset C$ s.t. $\| y_k - x\| \to d_c(x)$, $\| \bar{y}_k - \bar{x}\| \to d_c(\bar{x})$. $z_k = \alpha y_k + (1 - \alpha) \bar{y}_k$.
-\begin{align*}
-d_c(\alpha x + (1-\alpha) \bar{x}) &\le \| z_k - \alpha x - (1 - \alpha) \bar{x}\| \\
-& = \| \alpha(y_k - x) + (1 - \alpha)(\bar{y}_k - \bar{x})\| \\
-& \le \alpha \| y_k - x\| + (1 - \alpha ) \|\bar{y}_k - \bar{x}\|
-\end{align*}
-Take $k \to \infty$, $d_c(\alpha x + (1 - \alpha) \bar{x}) \le \alpha d(x) + (1 - \alpha) d(\bar{x})$
+\begin{definition}
+	[normal subgroup] If $H \leq G$ and all conjugates of $H$ is $H$ itself, we denote $H \unlhd G$.
+	Note that this condition is also equivalent to $gH = Hg$
+	(as subsets) for any $g \in G$. 
+\end{definition}
+
+\begin{definition}
+	[quotient group] Let $H \unlhd G$, then $\forall a,b \in G$, we define
+	\[aH \cdot bH:=\{kl | k\in aH, l \in bH\} = abH\]
+	as subsets of $G$. This defines a group structure on $G/H$, called the {\bf quotient group} or the {\bf factor group} of $G$ by $H$.  
+\end{definition}
+
+\subsection{Some Technical Results}
+\begin{proposition}
+	Let $H$ and $K$ be subgroups of a group $G$. Define $HK = \{hk | h\in H, k\in K\}$. When $G$ is finite, we have 
+	\[|HK| = \frac {|H| \cdot |K|} {|H \cap K|}\]
+\end{proposition}
+
+\begin{proof}
+	{\it to be written}
+\end{proof}
+
+The following lemmas tells when $HK$ is a (normal) subgroup.
+\begin{lemma}
+	Let $H$ and $K$ be subgroups of $G$. If $HK = KH$ as sets, then $HK$ is a subgroup of $G$.
+	In particular, if $K$ is a normal subgroup, then $hK = Kh$ for any $h \in H$, and thus $HK = KH$ is a subgroup of $G$.
+\end{lemma}
+\begin{proof}
+	We need to verify that $\forall h_1k_1 \cdot (h_2k_2)^{-1} = h_1k_1k_2^{-1}h_2^{-1}\in HK$. Since $h_1(k_1k_2^{-1}) \in HK = KH$, there exists $h,k$ such that $h_1k_1k_2^{-1} = kh$. 
+	Then $khh_2^{-1} \in KH = HK$.
+\end{proof}
+
+\begin{lemma}
+	If $H, K$ are both normal subgroups of $G$, then $HK$ is also a normal subgroup of $G$.
+\end{lemma}
+\begin{proof}
+	$\forall g \in G$, we have $gHK = HgK = HKg$. 	
+\end{proof}
+
+\subsection{homomorphism}
+\begin{definition}
+	[Kernel as a group homomorphism] For a homomorphism $\phi: G \to H$ of groups, the {\bf kernel} is 
+	\[ker \;\phi = \{g \in G | \phi(g) = e_H\}\]
+\end{definition}
+
+\begin{lemma}
+	Let $\phi:G\to H$ be a group homomorphism. \\
+	(1) The image $\phi(G)$ is a subgroup of $H$. \\
+	(2) The kernel $ker \; \phi$ is a normal subgroup of $G$.
+\end{lemma}
+\begin{proof}
+	(1) It follows from that $\phi(g_1)\phi(g_2)^{-1} = \phi(g_1g_2^{-1}) \in \phi(G)$ \\
+	(2) If $g_1, g_2 \in ker \; \phi$, then 
+	\[\phi(g_1g_2^{-1}) = e_He_H^{-1} = e_H\]
+	For any $g' \in G$, and any $g \in ker \ \phi$, \[\phi(g'gg'^{-1}) = \phi(g')e_H\phi(g')^{-1} = e_H\]  
+\end{proof}
+
+\begin{lemma}
+	A homomorphism $\phi: G \to H$ of groups is injective if and only if $ker \; \phi = \{e_G\}$.
+\end{lemma}
+
+\section{isomorphism theorems, composition series, statement of Holder Theorem}
+\subsection{isomorphism theorems}
+
+\begin{theorem}
+	[The first isomorphism theorem] If $\phi: G \to H$ is a homomorphism of groups, then $ker \; \phi \unlhd G$ and \[
+		G / ker \phi \cong \phi(G) \]
+\end{theorem}
+
+\begin{theorem}
+	[The second homomorphism theorem] Let $G$ be a group, and let $A \leq G$ be a subgroup and $B \unlhd G$ a normal subgroup. Then $AB$ is a subgroup of G, $B \unlhd AB, A\cap B \unlhd A$, and 
+	\[AB/B \cong A/(A\cap B)\]
+\end{theorem}
+\begin{proof}
+	By lemma 1.2.2 we know $AB$ is a subgroup of $G$. \\
+	For any $ab \in AB$, since $B$ is normal to $G$, $abB = aB = Ba$ and $aB = aBb = Bab$. So $B \unlhd AB$. \\
+	It is clear that $A\cap B \leq A$. For any $a \in A, x \in A\cap B$, we have $axa^{-1} \in B$, since $B$ is normal. Also $axa^{-1} \in A$, since $x \in A$. So $A \cap B \unlhd A$. \\
+	To show the isomorphism, we define $\phi: AB \to A/(A\cap B)$ by $\phi(ab) = a(A\cap B)$. It's easy to verify that $\phi$ is well-defined, surjective and a homomorphism, with $ker \phi = B$. By Theorem 1.3.1, we know the statement is true.
+	\[\begin{tikzcd}
+		AB && {A/(A\cap B)} \\
+		\\
+		& {AB/B}
+		\arrow["\phi", two heads, from=1-1, to=1-3]
+		\arrow["q"', from=1-1, to=3-2]
+		\arrow["f"', from=3-2, to=1-3]
+	\end{tikzcd}\]
+\end{proof}
+
+\begin{theorem}
+	[The third isomorphism theorem] Let $G$ be a group and $H, K$ be normal subgroups with $H \leq K$. Then $K/H \unlhd G/H$, and 
+	\[(G/H)/(K/H) \cong G/K\] 
+\end{theorem}
+\begin{proof}
+	Consider the map 
+	\[\begin{tikzcd}
+		{\phi:} & {G/H} && {G/K} \\
+		& gH && gK
+		\arrow[from=1-2, to=1-4]
+		\arrow[maps to, from=2-2, to=2-4]
+	\end{tikzcd}\]
+	\begin{itemize}
+		\item $\phi$ is well-defined. We can simply redefine $\phi$ as $\phi(gH) = gH\cdot K = gK$ as product of subsets of $G$.
+		\item $\phi$ is homomorphism. Easy to verify.
+		\item $\phi$ is surjective.
+		\item ker $\phi = \{gH | gK = K\} = \{gH | g \in K\} = K/H$. So $K/H \unlhd G/H$. And by the first isomorphism theorem, we statement holds.  
+	\end{itemize}
+\end{proof}
+
+\begin{theorem}
+	[The fourth isomorphism theorem/ Lattice isomorphism theorem] Let $G$ be a group and $N \unlhd G$. Then there is a bijection
+	\[\begin{tikzcd}
+		{\{subgroups \ of \ G \ containing \ N\}} && {\{subgroups \ of \ G/N\}} \\
+		A && {A/N} \\
+		{\pi^{-1}(\overline A)} && {\overline{A}}
+		\arrow[tail reversed, from=1-1, to=1-3]
+		\arrow[maps to, from=2-1, to=2-3]
+		\arrow[maps to, from=3-3, to=3-1]
+	\end{tikzcd}\]
+	where $\pi: G \to G/N$ is the natural projection. \\
+	This bijection preserves
+	\begin{itemize}
+		\item inclusion of groups 
+		\item intersections
+		\item normality of subgroups 
+		\item quotients of subgroups 
+	\end{itemize}
+	Visually, we have: Lattice of subgroups of G containing N $\iff$ Lattice of subgroups of G/N. 
+\end{theorem}
+
+\section{Lattice}
+\begin{definition}
+	Let (S, $\leq$) be a set equipped with a partial order. (S, $\leq$) is called a {\it Lattice} if any $x, y \in S, \{x, y\}$ has a maximal lower bound and a minimal upper bound.  
+	The lower bound is denoted by $x \wedge y$, while the upper bound is denoted by $x \vee y$.
+\end{definition}
+
+\begin{example}
+	设 n 为正整数，$A_n$ 为 n 的所有正因数的几何，则 $A_n$ 关于整除关系构成格。
 \end{example}
-\begin{example}[Eigenvalues]
-Let $X \in S^n := \{ n \times n symmetric matrix\}$. $\lambda_1(x) \ge \lambda_2(X) \ge \ldots \ge \lambda_n(x)$.\\
-$f_k(x) = \sum_{1}^n \lambda_i(x)$.\\
-Equivalent characterization 
-
-\begin{align*}
-f_k(x) & = \max\{ \sum_{i} v_i^T Xv_i | v_i \perp v_j , i \neq j\} \\
-& =  \max\{ tr( V^TXV | V^T V = I_k \} \\
-\max \{tr(VV^TX) \} \text{by circularity}
-\end{align*}
-Note $\langle A,B\rangle  = tr(A,B)$ is true for symmetric matrix. \\
-$\langle A,A\rangle  = |A |_F^2 = \sum_{i} A_{ii}^2$
+\begin{example}
+	设 $P(B)$ 为 $B$ 的幂集,则 $P(B)$ 关于包含关系 $\subseteq$ 构成格，称为幂集格.
 \end{example}
 
-\section{Support Function}
-Take a set $C \in \R^n$, not necessarily convex.The support function is $\sigma_C = \R^n \to \bar{\R}$. $\sigma_C(x) = \sum \{ \langle x,u\rangle  | u \in C\}$.
-\includegraphics[scale=0.5]{1_1.png}
-\begin{fact}
-The support function binds the supporting hyper-plane.
-\end{fact}
-
-Supporting functions are
-\begin{itemize}
-\item Positively homogeneous\\
-$\sigma_C(\alpha x) = \alpha \sigma_C(x) \forall \alpha \rangle  0$ \\
-$\sigma_C(\alpha x ) = \sup_{u \in C} \langle \alpha x, u\rangle  = \alpha \sup_{u \in C} \langle x, u\rangle  = \alpha \sigma_C(x)$
-\item Sub-linear( a special case of convex, linear combination holds $\forall \alpha$.\\
-$\sigma_C(\alpha x + (1 - \alpha) y ) = \sup_{u \in C} \langle \alpha x + (1 - \alpha) y,u\rangle  \le \alpha\sup_{u \in C}\langle x,u\rangle  + (1 - \alpha)\sup_{u \in C}\langle y,u\rangle  $
-\end{itemize}
-\begin{example}[L2-norm]
-$\| x \| = \sup_{u \in C} \{ \langle x, u \rangle, u \in \R^n \}$.\\
-$\|x \|_p = \sup \{ \langle x, u \rangle, u \in B_q \}$ where $\frac{1}{p} + \frac{1}{q} = 1$. $B_q = \{ \|x \|_q \le 1\}$.\\
-The norm is 
-\begin{itemize}
-\item Positive homogeneous
-\item sub-linear
-\item If $0 \in C$, $\sigma_C$ is non-negative.
-\item If $C$ is central-symmetric, $\sigma_C(0) = 0$ and $\sigma_C(x) = \sigma_C(-x)$
-\end{itemize}
+\begin{example}
+	[子群格] 群G的所有子群,关于包含关系。
 \end{example}
 
-\begin{fact}[Epigraph of a support function]
-$epi \space \sigma_C = \{ (x,t) | \sigma_C(x) \le t\}$.
-Suppose $(x,t) \in epi \space \sigma_C$. Take any  $\alpha > 0$. $\alpha(x,t) = (\alpha x, \alpha t)$.\\
-$\alpha \sigma_C(x) = \alpha \sigma_C(x) \le \alpha t$. $\alpha(x,c) \in epi 
-\sigma_C$\\
-\includegraphics[]{1_2}
-\end{fact}
-
-\section{Operations Preserve Convexity of Functions}
-\begin{itemize}
-\item Positive affine transformation \\
-$f_1,f_2,\ldots,f_k \in \space cvx \R^n$.\\
-$f = \alpha_1 f_1 + \alpha_2 f_2 + \ldots + \alpha_k f_k$
-\item Supremum of functions. Let $\{ f_i \}_{i \in I}$ be arbitrary family of functions. If $\exists x \sup_{j \in J} f_j(x) < \infty \Leftrightarrow f(x) = \sup_{j \in J} f_j(x) $\\
-\includegraphics[]{1_3}
-\item Composition with linear map.\\
-$f \in cvx \R^n$, $A:\R^n \to \R^m$ is a linear map.
-$f \circ A (x) = f(Ax) \in cvx \R^n$\\
-\begin{align*}
-f \circ A (x) & = f(A(\alpha x + (1-\alpha) y)) \\
-& = f(A \alpha x + (1-\alpha) A y) \\
-& \le \alpha f(Ax) + (a - \alpha) f(Ay)
-\end{align*}
-\end{itemize}
-
+%%% -------------------------
+%%%  chapter{Rings and Ideals}
+%%%
 \chapterimage{destiny2_resized.jpg} % Chapter heading image
 \chapter{Rings and Ideals}
+If not pointed out specifically, the notion "ring" refers to a commutative ring with an identity element. 
+
+\section{rings, ideals, quotient rings}
+\begin{definition}
+	[ring homomorphism] Let $A, B$ be rings, $f : A\to B$ is a homomorphism when \\
+	(1) $f(x+y) = f(x) + f(y)$. So $f$ is a homomorphism of abelian groups. \\
+	(2) $f(xy) = f(x)f(y)$, $f(1) = 1$. So $f$ is a homomorphism between the monoids $(A, \cdot)$ and $(B, \cdot)$.
+
+\end{definition}
+\begin{definition}
+	[ideal of a ring] An ideal $I$ of a ring $A$ is an additive subgroup and is such that $A\I \subseteq I$.
+\end{definition}
+\begin{example}
+	Every ring $A$ has 2 trivial ideals: $\{0\}$ and $A$.
+\end{example}
+
+Below, $I$ denotes the ideal of ring $A$.
+\begin{definition}
+	[quotient ring] Define multiplication in the quotient group $A/\I$ by\\
+	\[(a + I) \cdot (b + I) = ab + I\]
+	It is well defined. Now $A/I$ is made into a ring called the {\it quotient ring}. The mapping $\phi: A \to A/I$ which maps each $x \in A$ to its coset $x + I$ is a surjective ring homomorphism.
+\end{definition}
+
+\begin{proposition}
+	There is a one-to-one order preserving correspondence between 
+	\[\begin{tikzcd}
+		{\{J|I\subseteq J \subseteq A, J:ideal\}} && {\{\overline{J} | ideal \; \overline{J} \subseteq A/I\}} \\
+		J && {J + I} \\
+		{\phi^{-1}(\overline{J})} && {\overline{J}}
+		\arrow["{1:1}", tail reversed, from=1-1, to=1-3]
+		\arrow[maps to, from=2-1, to=2-3]
+		\arrow[maps to, from=3-3, to=3-1]
+	\end{tikzcd}\]
+\end{proposition}
+\begin{proof}
+	First, Let's show that $J + I$ is an ideal in $A/I$. \\
+	$J + I$ is abelian : trivial; $\forall x + I \in A/I, (x+I)\cdot(J+I) = (Jx + I) \subseteq (J+I) $, since $J$ is an ideal. \\
+	Second, we can verify this mapping to be invertible.
+
+\end{proof}
+
+\begin{corollary}
+	If $f: A\to B$ is any ring homomorphism, the {\it kernel} of $f(=f^{-1}(0))$ is an ideal of $A$, and the image of $f (= f(A))$ is a subring $C$ of $B$, but may not be an ideal.
+\end{corollary}
+\begin{proof}
+	Consider the embedding mapping\[\begin{tikzcd}
+		{\mathbb{Q} } && {\mathbb{Q}[X]}
+		\arrow[hook, from=1-1, to=1-3]
+	\end{tikzcd}\]
+	The image is absolutely not an ideal.
+\end{proof}
+
+\begin{theorem}
+	[fundamental homomorphism theorem] $f: A \to B$ is a ring homomorphism, $I$ is the kernel of $f$, $g(a + I) := f(a)$ then $g$ is a ring isomorphism.
+	\[\begin{tikzcd}
+		A && {Im(f)} && B \\
+		\\
+		&& {A/I}
+		\arrow["f", two heads, from=1-1, to=1-3]
+		\arrow[hook, from=1-3, to=1-5]
+		\arrow["g", from=3-3, to=1-3]
+		\arrow["\phi", from=1-1, to=3-3]
+	\end{tikzcd}\]
+
+\end{theorem}
+
+\section{zero-divisors, nilpotent elements, units}
+\begin{definition}
+	[zero-divisor] a zero-divisor in a ring $A$ is an element $x$ for which there exists $y \neq 0$ in $A$ such that $xy = 0$
+\end{definition}
+\begin{definition}
+	[integral domain] a ring with no zero-divisors $\neq 0$ and not a zero ring.
+\end{definition}
+
+\begin{definition}
+	[nilpotent] An element $x \in A$ is {\it nilpotent} if $x^n = 0$ for some $n > 0$.
+\end{definition}
+\begin{remark}
+	A nilpotent element is a zero-divisor.
+\end{remark}
+
+\begin{definition}
+	[unit 可逆元] A unit in $A$ is an element $x$ such that $xy = 1$ for some $y \in A$. Note that $y$ is uniquely determined by $x$, and is written as $x^{-1}$. 
+\end{definition}
+\begin{remark}
+	The units in $A$ form a abelian group under multiplication.
+\end{remark}
+
+\begin{definition}
+	[field] A field is a ring $A$ which $1 \neq 0$ and every non-zero elem. is a unit.
+\end{definition}
+
+\begin{proposition}
+Let A be a ring $\neq 0$. The following are equivalent:\\
+(1) A is a field;\\
+(2) The only ideals in A are ${0}$ and $(1)$; \\
+(3) Every non-trivial homomorphism of A into a non-zero ring B is injective.	
+\end{proposition}
+
+\section{prime ideals and maximal ideals}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fm}{$\mathfrak{m}$}
+\begin{definition}
+	[prime ideal]An ideal $\fp$ in $A$ is {\it prime} if $\fp \neq (1)$ and if $xy \in \fp \implies x\in \fp$ or $y \in \mathfrak{p}$ 
+\end{definition}
+
+\begin{definition}
+	[maximal ideal] An ideal \fm in $A$ is {\it maximal} if \fm $\neq (1)$ and if there is no ideal $\alpha $ such that \fm $\subset \alpha \subset (1)$(strict inclusion).
+\end{definition}
+
+\begin{proposition}
+	$\fp$ is prime $\iff$ $A/\fp$ is an integral domain.
+\end{proposition}
+\begin{proof}
+	Easy to verify.
+\end{proof}
+
+\begin{proposition}
+	\fm \text{ }is maximal $\iff$ $A/m$ is a field. Hence, a maximal ideal is prime.
+\end{proposition}
+\begin{proof}
+	By Proposition 2.1.1 and Proposition 2.2.1, the statement holds.
+\end{proof}
 
 \chapterimage{town_resized.png} % Chapter heading image
 \chapter{Module Theory}
