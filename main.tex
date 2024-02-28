@@ -553,6 +553,38 @@ First, we observe the following
 	[Hint] The cancellation law applies in the integral domain.
 \end{proof}
 
+\section{nilradical and Jacobson radical}
+\begin{proposition}
+	The set $\mathfrak{R}$ of all nilpotent elements in a ring $A$ is an ideal, and $A / \mathfrak{R}$ has no nilpotent element $\neq 0$.
+\end{proposition}
+\begin{proof}
+	For any $x,y \in \mathfrak{R}$, there exists $n \geq 0$ such that, $(x-y)^n = 0$. Thus, $x - y \in \mathfrak{R}$ and $\mathfrak{R}$ is abelian group. It's easy to show that $\mathfrak{R}$ is an ideal.
+	If there exists $a \in A$, such that $\exists n > 0, (a + \mathfrak{R})^n = 0 = a^n + \mathfrak{R}$ , then $a \in \mathfrak{R}$. Hence, $A / \mathfrak{R}$ has no non-zero nilpotent element.
+\end{proof}
+
+The ideal $\mathfrak{R}$ is called the {\it nilradical} of $A$.
+\begin{proposition}
+	The nilradical of $A$ is the intersection of all the prime ideals of $A$.
+\end{proposition}
+\begin{proof}
+	We observe that every nilpotent element belongs to any prime ideal. Hence, $\mathfrak{R} \subseteq \cap_{p:prime \ ideal}p$.
+	On the other side, for each element within the intersection of all prime ideals, 试图用Zorn's lemma寻找一个极大理想，证明这也是一个prime ideal. 从而non-nilpotent element不属于这个ideal.
+\end{proof}
+
+\begin{definition}
+	[Jacobson radical] The Jacobson radical $\mathfrak{R}$ of $A$ is defined to be the intersection of all the maximal ideals of $A$.
+\end{definition}
+It can be characterized as
+\begin{proposition}
+	$x\in \mathfrak{R} \iff 1 - xy$ is a unit for all $y \in A$.
+\end{proposition}
+\begin{proof}
+	$\implies$: Suppose $1-xy$ is not a unit. By corollary 2.3.7 it belongs to some maximal ideal $m$. But $x\in \mathfrak{R}\subseteq m$, hence $xy \in m$ and $1 \in m$, which is absurd. \\
+	$\Leftarrow$: 考虑Bezout定理。If $x\notin m$ for some maximal ideal $m$, then $m + (x)$ generate the unit ideal $(1)$, so that $u + xy = 1$ for some $u \in m, y \in A$. Hence $1 - xy \in m$ is not a unit.
+\end{proof}
+
+\section{operations on ideals}
+
 \chapterimage{town_resized.png} % Chapter heading image
 \chapter{Module Theory}
 
