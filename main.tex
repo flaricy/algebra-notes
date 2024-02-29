@@ -404,6 +404,16 @@ Below, $I$ denotes the ideal of ring $A$.
 
 \end{theorem}
 
+\section{Chinese Remainder Theorem}
+\begin{theorem}
+	Let $N \in \mathbb{N}^+, N = n_1n_2...n_k$, where $n_i,n_j (i \neq j)$ are coprime. We have 
+	\begin{align*}
+	\phi:  \mathbb{Z}/N\mathbb{Z} &\to \prod_{i = 1}^{k}\mathbb{Z}/n_i\mathbb{Z}\\
+	 [x]_N &\mapsto ([x_i]_{n_i})_{i=1}^k
+	\end{align*}
+	is an isomorphism of rings.
+\end{theorem}
+
 \section{zero-divisors, nilpotent elements, units}
 \begin{definition}
 	[zero-divisor] a zero-divisor in a ring $A$ is an element $x$ for which there exists $y \neq 0$ in $A$ such that $xy = 0$
@@ -584,6 +594,46 @@ It can be characterized as
 \end{proof}
 
 \section{operations on ideals}
+
+\section{polynomial rings}
+Here, we mainly consider integral domain or field to be the ring. We will use the notion of {\bf degree}.
+\begin{lemma}
+	Let $R$ be an integral domain. For all non-zero $f, g \in R[X]$ we have $\deg (fg) = \deg f + \deg g$. And $R[X]$ is also an integral domain, with $R[X]^{\times} = R^{\times}$.
+\end{lemma}
+
+Now about polynomials over a field $F$.
+\begin{proposition}
+	[带余除法] For any $a,d \in F[X], d \neq 0$, there exists unique $q,r \in F[X]$ such that $\deg (r) <\deg (d), a = dq + r$. Here, we define $deg (0) = -\infty$.
+\end{proposition}
+\begin{proof}
+	To find $r$, consider set $\{a - dq : q \in F[X]\}$. There exists element such that $\deg(a - dq)$ is minimal.	
+\end{proof}
+
+\begin{definition}
+	[root] For a commutative ring $R$, $f \in R[X], a \in R$ such that $f(a) = 0$. Then $a$ is called a root of $f$.
+\end{definition}
+
+By proposition 2.7.2, we immediately get 
+\begin{proposition}
+	$f(a) = 0 \iff (X - a) | f$.
+\end{proposition}
+
+As to the number of roots, we have 
+\begin{proposition}
+	$F$ : field, $f \in F[X]-\{0\}$, then $f$ has at most $\deg f$ roots in $F$.
+\end{proposition}
+\begin{proof}
+	Use proposition 2.7.3 and induce on the degree of $f$.
+\end{proof}
+
+\begin{definition}
+	[Fraction Field of an integral domain] Let $A$ be an integral domain, use {\it Frac(A)} to denote ... 
+\end{definition}
+
+With fraction field, we can extend proposition 2.7.4,
+\begin{lemma}
+	Let $R$ be an integral domain, $f \in R[X] - \{0\}$, then $f$ has at most $\deg f$ different roots in $R$.	
+\end{lemma}
 
 \chapterimage{town_resized.png} % Chapter heading image
 \chapter{Module Theory}
