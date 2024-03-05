@@ -288,7 +288,7 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \end{definition}
 
 \begin{example}
-	设 n 为正整数，$A_n$ 为 n 的所有正因数的几何，则 $A_n$ 关于整除关系构成格。
+	设 n 为正整数，$A_n$ 为 n 的所有正因数的集合，则 $A_n$ 关于整除关系构成格。
 \end{example}
 \begin{example}
 	设 $P(B)$ 为 $B$ 的幂集,则 $P(B)$ 关于包含关系 $\subseteq$ 构成格，称为幂集格.
@@ -333,6 +333,119 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \begin{proposition}
 	
 \end{proposition}
+
+\section{recognizing direct product, group actions, semi-direct product}
+\subsection{recognizing direct products}
+\begin{theorem}
+	[criterion of direct product group] Suppose $G$ is a group with subgroups $H, K$ such that \\
+	(1) $H, K$ are normal. \\
+	(2) $H \cap K = \{1\}$ \\
+	Then $HK \cong H \times K$
+\end{theorem}
+\begin{proof}
+	Recall that Lemma 1.2.1 and 1.2.2 ensures that $HK = KH$ are normal subgroup of $G$. \\
+	Consider the map 
+	\[\begin{tikzcd}
+		{\phi:} & {H\times K} && HK \\
+		& {(h,k)} && hk
+		\arrow[from=1-2, to=1-4]
+		\arrow[maps to, from=2-2, to=2-4]
+	\end{tikzcd}\]
+	\begin{itemize}
+		\item $\phi$ is a homomorphism. $\phi((h_1,k_1)(h_2,k_2)) = \phi((h_1h_2,k_1k_2))=h_1h_2k_1k_2$. It suffices to show that $h_2k_1 = k_1h_2$, or $h_2k_1h_2^{-1}k_1^{-1} = 1$. Since $h_2k_1h_2^{-1} \in K, k1h_2^{-1}k_1^{-1}\in H$, we know $h_2k_1h_2^{-1}k_1^{-1}\in H \cap K = \{1\}$.
+		\item $\phi$ is surjective.
+		\item $\ker \phi = \{(h,k) : hk = 1\} = \{(1,1)\}$.
+	\end{itemize}
+\end{proof}
+
+\subsection{group actions}
+\begin{definition}
+	Let $G$ be a group and $X$ a set. A left G-action on $X$ is a map 
+	
+		\begin{align*}
+			G \times X & \to X \\
+			  (g,x) & \mapsto g  \cdot x 
+	   \end{align*}
+	satisfying the following conditions: \\
+	(1) for any $x \in X$, $e \cdot x = x$ \\
+	(2) for any $g,h \in G$ and $x \in X$, we have 
+	\[g(hx) = (gh)x\]
+\end{definition}
+
+\begin{remark}
+	for any $g\in G$, the induced $X \to X$ given by $x \mapsto g\cdot x$ is a bijection. Because the inverse is given by $x \mapsto g^{-1} x$.
+\end{remark}
+
+\begin{definition}
+	[conjugate action] for $g\in G$, consider 
+	\begin{align*}
+		Ad_g: G \to G \\
+		Ad_g(x) := gxg^{-1}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+	Let $G$ be a group acting on a set $X$. Then we have a natural homomorphism from $G$ to the permutation group of $X$:
+	\[\begin{tikzcd}
+		{\Phi:} & G && {S_X} \\
+		& g && {(\phi_g:x\mapsto g\cdot x)}
+		\arrow[from=1-2, to=1-4]
+		\arrow[maps to, from=2-2, to=2-4]
+	\end{tikzcd}\]
+	In fact, to given a group action is equivalent to give a homomorphism $\Phi:G\to S_X$.
+\end{proposition}
+\begin{proof}
+	$\Phi(gh) = \phi_{gh}$, and $\phi_g \circ \phi_h (x) = g\cdot(h\cdot x) = (gh)\cdot x = \phi_{gh}(x)$.
+\end{proof}
+
+\begin{definition}
+	(1) If the above $\Phi$ is injective, we say this action is {\bf faithful}. \\
+	(2) If $\Phi$ is trivial, i.e. $\phi_g = id$ for any $g \in G$, we say the action is {\bf trivial}.
+\end{definition}
+
+\begin{theorem}
+	[Cayley] Every group is isomorphic to a subgroup of some symmetry group. If $|G| = n$, then $G$ is isomorphic to a subgroup of $S_n$.
+\end{theorem}
+\begin{proof}
+	Consider Prop. 1.6.2, it induces a homomorphism (injective) $G \to S_G$.
+\end{proof}
+
+\subsection{Automorphism groups}
+\begin{definition}
+	An {\bf automorphism} of a group $G$ is an isomorphism $\sigma: G \to G$. Then 
+	\[Aut(G) := \{automorphisms \ of \ G\}\] 
+	forms a group. It's a subgroup of $S_G$.
+\end{definition}
+
+\subsection{semi-direct products}
+
+\section{Stabilizers, orbits of group actions, class equations}
+\subsection{Stabilizers and orbits of group actions}
+\begin{definition}
+	Let $G$ be a group acting on a set $X$. For each $x \in X$,
+	\begin{itemize}
+		\item define the {\bf stabilizer subgroup} at $x$ to be $Stab_G(x)=\{g\in G| g\cdot x = x\}$
+		\item define the {\bf orbit} of $x$ to be $Orb_G(x) = \{g\cdot x | g \in G\}\subseteq X$ 	
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	[centralizer, center, normalizer] Let $G$ be a group, $H$ a subgroup, and $S \subseteq G$ a subset.  \\
+	(1) The subgroup $C_G(S) :=\{g\in G | for \ every \ s \in S, gsg^{-1} = s\}$ is called the {\bf centralizer} of $S$ in $G$\\
+	(2) The subgroup $Z(G) :=\{g\in G | \forall h \in G, ghg^{-1} = h\} = C_G(G)$ is called the {\bf center} of $G$. \\
+	(3) The subgroup $N_G(H) := \{g \in G | gHg^{-1} = H\}$ is called the {\bf normalizer} of $H$ in $G$.
+\end{definition}
+
+\begin{remark}
+	Note that $Z(G)$ is abelian.
+\end{remark}
+\begin{proposition}
+	(1) The Conjugation action induces a homomorphism $Ad: G \to Aut(G)$. Then $Z(G) = \ker (Ad)$. Thus, $Z(G)$ is a normal subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	$\ker (Ad) = \{g | Ad_g = id\}$	
+\end{proof}
+
 %%% -------------------------
 %%%  chapter{Rings and Ideals}
 %%%
@@ -671,6 +784,31 @@ by the rule $\phi(x) = (x+\alpha_1,...,x+\alpha_n)$.
 	[annihilator] $(0:b)$ is called the {\it annihilator} of $b$ and denoted by $Ann(b)$.
 \end{definition}
 
+\section{extension and contraction}
+let $f: A \to B$ be a ring homomorphism.
+\begin{definition}
+	[extension]
+	If $a$ is an ideal in $A$, we define the {\it extension} $a^e$ to be the ideal generated by $f(a)$ in $B$. Explicitly, $a^e$ is the set of all sums $\sum y_if(x_i)$ where $x_i \in a, y_i \in B$.
+\end{definition}
+
+\begin{definition}
+	[contraction] If $b$ is an (prime) ideal of $B$, then $f^{-1}(b)$ is always an (prime) ideal of $A$, called the contraction $b^c$ of $b$.
+\end{definition}
+To show its correctness, we have the following
+\begin{proposition}
+	Let $f:A \to B$ be a surjective ring homomorphism. There is a one-to-one correspondence between the ideals of $f(A) = B$ and ideals of $A$ which contain $\ker f$, and prime ideals correspond to prime ideals.
+	\[\begin{tikzcd}
+		{\{ideals \ of \ A : A \supseteq \ker f\}} && {\{ideals \ of \ B\}} \\
+		I && {f(I)} \\
+		{f^{-1}(J)} && J
+		\arrow["{1:1}", tail reversed, from=1-1, to=1-3]
+		\arrow[maps to, from=2-1, to=2-3]
+		\arrow[maps to, from=3-3, to=3-1]
+	\end{tikzcd}\]
+\end{proposition}
+\begin{proof}
+	We only show that prime-ideal correspondence. If $I$ is prime, for any $f(a), f(b)$ where $a,b\in I$, $f(a)f(b) \in f(I) \iff f(ab) \in f(I) \iff ab \in I \iff a\in I \ or \ b \in I \iff f(a) \in f(I) \ or \ f(b) \in f(I)$. Thus, $f(I)$ is prime. The other side is similar.
+\end{proof}
 
 \section{polynomial rings}
 Here, we mainly consider integral domain or field to be the ring. We will use the notion of {\bf degree}.
