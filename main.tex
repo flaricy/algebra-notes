@@ -137,6 +137,21 @@
 	\[Q_8 = \{1,-1,i,-i,j,-j,k,-k\}\]
 \end{definition}
 
+\subsection{exercises}
+\begin{example}
+	suppose $G$ is cyclic. \\ 
+	(1) Any subgroup of $G$ is cyclic. \\
+	(2) If $|G| = \infty$, then all the subgroups but $\{e\}$ have order of infinity. \\
+	(3) If $|G| = n$, then the order of subgroup is a factor of $n$. For every $d | n$, $G$ has only one $d$-ordered group.
+\end{example}
+
+\begin{example}
+	$G$ is a group. $\forall x \in G$, $x^2 = 1$. Then $G$ is abelian.
+\end{example}
+\begin{remark}
+	If $G$ has an element with order $\geq 3$, then there exists $a\neq b, a,b\neq 1$ such that $ab = ba$.
+\end{remark}
+
 \section{cosets, Lagrange theorem, quotient groups}
 \subsection{Conjugation, normal subgroups, and quotient groups.}
 \begin{definition}
@@ -429,6 +444,24 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 	\end{itemize}
 \end{definition}
 
+\begin{proposition}
+	Let $G$ be a group acting on a set $X$ and $x\in X$. \\
+	(1) $Stab_G(x)$ is a subgroup. \\
+	(2) For $x,y \in X$, either $Orb_G(x) = Orb_G(y)$ or $Orb_G(x) \cap Orb_G(y) = \empty$. $X$ is the disjoint union of orbits for the $G$-action. \\
+	(3) If $y \in Orb_G(x)$, i.e. $y = g\cdot x$ for some $g\in G$, then $Stab_G(y) = g \ Stab_G(x) \  g^{-1}$. Namely, the stabilizers at different points of an orbit are conjugate to each other.
+\end{proposition}
+\begin{proof}
+	all very trivial.	
+\end{proof}
+
+\begin{example}
+	[conjugacy classes] Definition 1.6.2 gives a group action of $G$ on itself. \\
+	(1) If $G$ is abelian, the conjugacy class of $a\in G$ is just $\{a\}$. \\
+	(2) For $G = GL_n(\mathbb{C})$, every matrix can be conjugated into a Jordan block. \[
+		\{conjugacy \ classes \ of \ G\} \iff \{Jordan \ canonical\ form \ (with \ nonzero \ eigenvalues \ up \ to \ permutation)\} \] \\
+	(3) $G = S_n$, the conjugacy classes are in one-to-one correspondence with partitions of $n = n_1 + n_2 + ... + n_t$.
+\end{example}
+
 \begin{definition}
 	[centralizer, center, normalizer] Let $G$ be a group, $H$ a subgroup, and $S \subseteq G$ a subset.  \\
 	(1) The subgroup $C_G(S) :=\{g\in G | for \ every \ s \in S, gsg^{-1} = s\}$ is called the {\bf centralizer} of $S$ in $G$\\
@@ -445,6 +478,50 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \begin{proof}
 	$\ker (Ad) = \{g | Ad_g = id\}$	
 \end{proof}
+
+\begin{definition}
+	[G-equivariant] Let $G$ be a group acting on two sets $X$ and $Y$. We say a map $\phi: X \to Y$ is G-equivalent if \\
+	for all $g\in G, x \in X$, we have $\phi(g\cdot x) = g\cdot \phi(x)$.
+\end{definition}
+
+\begin{definition}
+	[transitive] Let $G$ be a group acting on a set $X$. We say that the action is {\bf transitive} if \\
+	for any $x,y \in X$, there exists $g \in G$, such that $x = gy$.
+\end{definition}
+
+\begin{proposition}
+	If a group $G$ acts transitively on a set $X$, for every element $x \in X$, put $H = Stab_G(x)$. Then there is a G-equivalent bijection
+	\[\begin{tikzcd}
+		{\phi:} & {G/H} && X \\
+		& gH && gx
+		\arrow["\cong", from=1-2, to=1-4]
+		\arrow[from=2-2, to=2-4]
+	\end{tikzcd}\]
+	(Here $G/H$ is not a quotient group, but simply equivalence class)
+\end{proposition}
+\begin{proof}
+	verify that $\phi$ is well-defined, bijective, surjective, and preserves group action.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a group acting on a set $X$. For each $x \in X$, $G$ acts transitively on $Orb_G(x)$, thus we have
+	\[Orb_G(x) \cong G/Stab_G(x)\] as $G-equivalence$.
+	And 
+	\[X\cong \bigsqcup_{G-orbits \ G\cdot x} G/Stab_G(x)\] 
+\end{corollary}
+
+\subsection{class equations}
+分类方程
+\begin{theorem}
+	[class equation] Let $G$ be a finite group (acting on itself by conjugation) \\
+	(1) For each $g \in G$, the number of elements in its conjugacy class is \[|Ad_G(g)| = \frac {|G|} {C_G(g)} = [G:C_G(g)]\] \\
+	(2) If $g_1, g_2,...,g_r$ are representatives of conjugacy classes of $G$ that are not contained in $Z(G)$, then 
+	\[|G| = |Z(G)| + \sum_{i=1}^r [G : C_G(g_i)]\].
+\end{theorem}
+
+\begin{proposition}
+	For a non-trivial $p$-group, $Z(G)$ is nontrivial. 
+\end{proposition}
 
 %%% -------------------------
 %%%  chapter{Rings and Ideals}
