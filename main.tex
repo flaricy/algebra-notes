@@ -228,6 +228,19 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 	A homomorphism $\phi: G \to H$ of groups is injective if and only if $ker \; \phi = \{e_G\}$.
 \end{lemma}
 
+\begin{definition}
+	[ring structure on endomorphisms of an abelian group] Let $M$ be an abelian group. Use $E(M)$ to denote endomorphisms of $M$ (naturally an abelian group). We upgrade $E(M)$ to be a ring (may not commutative) by defining 
+	\[
+		1 = id_M \\
+		for \ f,g \in E(M), f\cdot g := f\circ g \in E(M)\]
+\end{definition}
+\begin{proposition}
+	The above definition makes $E(M)$ into a ring.	
+\end{proposition}
+\begin{proof}
+	The $(\cdot)$ operation on $E(M)$ forms a monoid. The distributivity law can be reduced to element-wise operation.
+\end{proof}
+
 \section{isomorphism theorems, composition series, statement of Holder Theorem}
 \subsection{isomorphism theorems}
 
@@ -1068,6 +1081,158 @@ With fraction field, we can extend proposition 2.7.4,
 \chapterimage{town_resized.png} % Chapter heading image
 \chapter{Module Theory}
 
+\section{modules and module homomorphisms}
+\begin{definition}
+	Let $A$ be a communitative ring. An $A-$module is an abelian group $M$ on which $A$ acts linearly, i.e. for any $a,b \in A, x,y \in M$
+	\[
+		a(x+y) = ax + ay \\
+		(a+b)x = ax + bx \\
+		(ab)x = a(bx) \\
+		1x = x\]
+\end{definition}
+
+\begin{proposition}
+	There is a one-on-one correspondence between all $A$-module structure on $M$ (denoted as $Mod_A(M)$) and ring homomorphisms $Hom(A, E(M))$.
+\end{proposition}
+\begin{proof}
+	check both sides.
+	\[\begin{tikzcd}
+		{Mod_A(M)} && {Hom(A,E(M))} \\
+		M && {(a\mapsto(m\mapsto am))} \\
+		{a\cdot m := f(a)(m)} && f
+		\arrow["{1:1}", tail reversed, from=1-1, to=1-3]
+		\arrow[maps to, from=2-1, to=2-3]
+		\arrow[maps to, from=3-3, to=3-1]
+	\end{tikzcd}\]
+\end{proof}
+
+\begin{example}
+	1) An ideal $\alpha$ of $A$ is an $A$-module.
+
+	2) If $A$ is a field, then $A-$module = vector space.
+
+	3) If $A=k[X]$ where $k$ is a field, then $A-module$ is a $k-$ vector space with a linear transformation.
+
+	4) If $A = \mathbb{Z}$ then $Z-module$ = Abelian group.
+\end{example}
+
+\begin{definition}
+	[module homomorphism] Let $M, N$ be $A-$modules. A mapping $f:M \to N$ is an $A-$homomorphism if 
+	\[
+		f(x+y) = f(x) + f(y) \\
+		f(ax) = a\cdot f(x)\]
+\end{definition}
+
+\begin{definition}
+	The set of all $A$-module homomorphisms from $M$ to $N$ can be turned into an $A-$module as follows \[
+		(f+g)(x) := f(x) + g(x) \\
+		(af)(x) := a(f(x))\]
+	This $A$-module is denoted by $Hom_A(M, N)$
+\end{definition}
+
+\section{submodules and quotient modules}
+\begin{definition}
+	A submodule $M'$ of $M$ is a subgroup of $M$ which is closed under $A$-action.
+\end{definition}
+
+\begin{definition}
+	[quotient] The abelian group $M/M'$ inherits an $A-module$ structure by defining 
+	\[
+		a(x + M') = ax + M'\]
+	The quotient map $\pi: M \to M/M'$ is an $A$-module homomorphism.
+\end{definition}
+
+\begin{proposition}
+	[A generalization of lattice homomorphism theorem in ring ideals] There is a one-to-one order-preserving correspondence between submodules of $M$ which contains $M'$ and submodules of $M/M'$.
+\end{proposition}
+
+\begin{definition}
+	[kernel, image] If $f:M\to N$ is an A-module homomorphism, define 
+	\[
+		\ker(f) = \{x\in M: f(x) = 0\in N\}\\
+		Im(f) = f(M)\\
+		Coker (f) = N/Im(f)\]
+\end{definition}
+\begin{proposition}
+	$\ker f$ is a submodule of $M$, $Im(f)$ is a submodule of $N$.
+\end{proposition}
+\begin{proposition}
+	\[
+		M/\ker f \cong Im(f)\]
+\end{proposition}
+
+\section{operations on submodules}
+Let $(M_i)_{i\in I}$ be a family of submodules of $M$.
+\begin{definition}
+	[sum] $\sum M_i$ is the set of all finite sums $\sum x_i$, where $x_i \in M_i$. It's the smallest submodule that contains all the $M_i$.
+\end{definition}
+
+\begin{definition}
+	[intersection] The intersection $\cap M_i$ is again a submodule of $M$. 
+\end{definition}
+
+\begin{definition}
+	Let $\alpha$ be an ideal of $A$, $M: A-module$ then $\alpha M$ is a sub A-module. 
+\end{definition}
+
+\begin{definition}
+	[annihilator]
+\end{definition}
+
+\section{direct sum and product}
+
+\section{finitely generated modules}
+
+\begin{definition}
+	[free module] A {\it free} $\mathrm{A}-module$ is one which is isomorphic to some $\oplus_{i\in I}A$.
+	A finitely generated free $A-module$ is isomorphic to $A\oplus\cdots\oplus A$ ($n$ summands), which is denoted by $A^n$.
+\end{definition}
+\begin{proposition}
+	$M$ is a finitely generated A-module $\iff$ $M$ is isomorphic to a quotient of $A^n$ for some integer $n > 0$.
+\end{proposition}
+\begin{proof}
+	$\implies$ : consider \[\begin{tikzcd}
+		{\phi:} & {A^n} && M \\
+		& {(a_i)} && {\sum a_ix_i}
+		\arrow[from=1-2, to=1-4]
+		\arrow[maps to, from=2-2, to=2-4]
+	\end{tikzcd}\]
+	Then $M\cong A/\ker \phi$.\\
+	$\impliedby$: consider 
+	\[\begin{tikzcd}
+		{A^n} && M \\
+		& {A^n/N}
+		\arrow["\phi"'{pos=0.6}, color={rgb,255:red,214;green,92;blue,92}, curve={height=6pt}, hook, two heads, from=2-2, to=1-3]
+		\arrow["q"', two heads, from=1-1, to=2-2]
+		\arrow["f", from=1-1, to=1-3]
+	\end{tikzcd}\]
+	Then $f:=q\circ \phi$ is surjective homomorphism. And $(f(e_i))$ generates $M$ since $(e_i)$ generates $A^n$, where $e_i = (0, 0, ..., 1, ...,0)$.
+\end{proof}
+
+\begin{proposition}
+	Let $M$ be a finitely generated A-module, let $\alpha$ be an ideal of $A$, $\phi \in E(M)$ such that $\phi(M) \subseteq \alpha M$. Then there exists $(a_i)$ such that 
+	\[\phi^n + a_1\phi^{n-1}+...+a_n = 0\]
+\end{proposition}
+\begin{proof}
+	Let $x_1,...,x_n$ be generators of $M$, then each $\phi(x_i) \in \alpha M$, so that $\phi(x_i) = \sum_{j}a_{ij}x_j$, where $a_{ij} \in \alpha$. So $\phi$ is equivalent to a matrix over ring $\alpha$.
+	But $Cayley-Hamilton$ theorem, we know $Char_{\phi}(\phi) = 0 \in E(M)$.  参考高代的证明。
+\end{proof}
+
+\begin{corollary}
+	Let $M$ be a finitely generated $A-module$, $\alpha$ be an ideal of $A$ such that $\alpha M=M$. Then there exists $x \equiv 1 (mod \ \alpha)$ such that $xM = 0$.
+\end{corollary}
+\begin{proof}
+	take $\phi = id$ in Proposition 3.5.2, and $x = 1 + a_1 + ... + a_n$.
+\end{proof}
+
+\begin{theorem}
+	[Nakayama's lemma] Let $M$ be a finitely generated $A-module$ and $\alpha$ an ideal of $A$ contained in the Jacobson radical $\mathfrak{R}$ of $A$. Then $\alpha M = M$ implies $M = 0$.
+\end{theorem}
+\begin{proof}
+	By 3.5.3 we get some $x \equiv 1$ (mod $\mathfrak R$), and $x$ is a unit in $A$. Hence $M = 0$.
+\end{proof}
+
 % file ending
+
 \end{CJK}
 \end{document}

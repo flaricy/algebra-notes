@@ -8,8 +8,8 @@
 \contentsline {subsection}{\numberline {1.2.1}Conjugation, normal subgroups, and quotient groups.}{8}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Some Technical Results}{9}{subsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.2.3}homomorphism}{9}{subsection.1.2.3}%
-\contentsline {section}{\numberline {1.3}isomorphism theorems, composition series, statement of Holder Theorem}{9}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}isomorphism theorems}{9}{subsection.1.3.1}%
+\contentsline {section}{\numberline {1.3}isomorphism theorems, composition series, statement of Holder Theorem}{10}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}isomorphism theorems}{10}{subsection.1.3.1}%
 \contentsline {section}{\numberline {1.4}Lattice}{11}{section.1.4}%
 \contentsline {section}{\numberline {1.5}composition series, Jordan-Holder Theorem, simplicity of An, direct product groups}{11}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}The simplicity of An, n >= 5}{12}{subsection.1.5.1}%
@@ -37,4 +37,9 @@
 \contentsline {chapter}{\numberline {3}Module Theory}{27}{chapter.3}%
 \ttl@stoptoc {default@2}
 \ttl@starttoc {default@3}
+\contentsline {section}{\numberline {3.1}modules and module homomorphisms}{27}{section.3.1}%
+\contentsline {section}{\numberline {3.2}submodules and quotient modules}{28}{section.3.2}%
+\contentsline {section}{\numberline {3.3}operations on submodules}{28}{section.3.3}%
+\contentsline {section}{\numberline {3.4}direct sum and product}{28}{section.3.4}%
+\contentsline {section}{\numberline {3.5}finitely generated modules}{28}{section.3.5}%
 \contentsfinish 
