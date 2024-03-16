@@ -21,18 +21,20 @@
 \contentsline {section}{\numberline {1.7}Stabilizers, orbits of group actions, class equations}{14}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Stabilizers and orbits of group actions}{14}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}class equations}{15}{subsection.1.7.2}%
-\contentsline {chapter}{\numberline {2}Rings and Ideals}{17}{chapter.2}%
+\contentsline {section}{\numberline {1.8}Sylow's Theorem}{16}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Applications of Sylow's theorem}{18}{subsection.1.8.1}%
+\contentsline {chapter}{\numberline {2}Rings and Ideals}{19}{chapter.2}%
 \ttl@stoptoc {default@1}
 \ttl@starttoc {default@2}
-\contentsline {section}{\numberline {2.1}rings, ideals, quotient rings}{17}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Chinese Remainder Theorem}{18}{section.2.2}%
-\contentsline {section}{\numberline {2.3}zero-divisors, nilpotent elements, units}{18}{section.2.3}%
-\contentsline {section}{\numberline {2.4}prime ideals and maximal ideals}{19}{section.2.4}%
-\contentsline {section}{\numberline {2.5}nilradical and Jacobson radical}{21}{section.2.5}%
-\contentsline {section}{\numberline {2.6}operations on ideals}{21}{section.2.6}%
-\contentsline {section}{\numberline {2.7}extension and contraction}{23}{section.2.7}%
-\contentsline {section}{\numberline {2.8}polynomial rings}{23}{section.2.8}%
-\contentsline {chapter}{\numberline {3}Module Theory}{25}{chapter.3}%
+\contentsline {section}{\numberline {2.1}rings, ideals, quotient rings}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Chinese Remainder Theorem}{20}{section.2.2}%
+\contentsline {section}{\numberline {2.3}zero-divisors, nilpotent elements, units}{20}{section.2.3}%
+\contentsline {section}{\numberline {2.4}prime ideals and maximal ideals}{21}{section.2.4}%
+\contentsline {section}{\numberline {2.5}nilradical and Jacobson radical}{23}{section.2.5}%
+\contentsline {section}{\numberline {2.6}operations on ideals}{23}{section.2.6}%
+\contentsline {section}{\numberline {2.7}extension and contraction}{25}{section.2.7}%
+\contentsline {section}{\numberline {2.8}polynomial rings}{25}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Module Theory}{27}{chapter.3}%
 \ttl@stoptoc {default@2}
 \ttl@starttoc {default@3}
 \contentsfinish 
