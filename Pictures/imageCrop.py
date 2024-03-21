@@ -11,8 +11,10 @@ def resize_image(image_path1, image_path2):
 
     # 检查第二张图片的尺寸是否大于第一张图片
     width2, height2 = img2.size
+    print("image1:", width1, height1,"\nimage2:",width2,height2)
     if width2 < width1 or height2 < height1:
-        raise ValueError("第二张图片的尺寸必须大于第一张图片的尺寸")
+        print("implement bicubic interpolation to super-sample.")
+        img2 = img2.resize((width1, height1), Image.BICUBIC)
 
     # 从左上角开始裁剪第二张图片
     img2_resized = img2.crop((0, 0, width1, height1))
@@ -25,4 +27,4 @@ def resize_image(image_path1, image_path2):
     print(f"图片已保存为 {new_image_path}")
 
 # 使用示例
-resize_image('./head1.png', './town.png')
+resize_image('./head1.png', './snow.png')
