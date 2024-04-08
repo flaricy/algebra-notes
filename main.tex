@@ -186,7 +186,15 @@
 \end{proposition}
 
 \begin{proof}
-	{\it to be written}
+	Let $HK = \sqcup_{i=1}^n Hk_i$, where $k_i$ are representatives. Since $H\cap K \le K$, consider equivalence classes $K / (H \cap K)$. Define 
+	\[\begin{tikzcd}
+		{f:} & {\sqcup_{i=1}^n Hk_i} && {K/(H\cap K)} \\
+		& {Hk_i} && {k_i(H\cap K)}
+		\arrow[from=1-2, to=1-4]
+		\arrow[maps to, from=2-2, to=2-4]
+	\end{tikzcd}\]
+
+	We can verify $f$ is well-defined, injective and surjective. So $|K| / |H\cap K| = n$ and the above proposition holds.
 \end{proof}
 
 The following lemmas tells when $HK$ is a (normal) subgroup.
@@ -199,6 +207,10 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 	Then $khh_2^{-1} \in KH = HK$.
 \end{proof}
 
+\begin{remark}
+	The converse of the above lemma is true, i.e. $HK$ is a subgroup $\implies$ $HK = KH$.
+\end{remark}
+
 \begin{lemma}
 	If $H, K$ are both normal subgroups of $G$, then $HK$ is also a normal subgroup of $G$.
 \end{lemma}
@@ -207,6 +219,13 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \end{proof}
 
 \subsection{homomorphism}
+\begin{definition}
+	[homomorphism, isomorphism] $f: G \to G'$, for any $x,y \in G$, $f(xy) = f(x)f(y)$, then $f$ is called a homomorphism. If $f$ is bijection, then $f$ is an isomorphism.
+\end{definition}
+\begin{remark}
+	$f: G\to G$ is injective (or surjective) and homomorphism, $f$ may not be a bijection (unless $G$ is finite.)	
+\end{remark}
+
 \begin{definition}
 	[Kernel as a group homomorphism] For a homomorphism $\phi: G \to H$ of groups, the {\bf kernel} is 
 	\[ker \;\phi = \{g \in G | \phi(g) = e_H\}\]
@@ -247,7 +266,21 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \begin{theorem}
 	[The first isomorphism theorem] If $\phi: G \to H$ is a homomorphism of groups, then $ker \; \phi \unlhd G$ and \[
 		G / ker \phi \cong \phi(G) \]
+	In general, if $\phi: G\to H$ is a homomorphism, $\ker \phi \subseteq N \trianglelefteq G$, then $\phi(N) \unlhd \phi(G)$, and 
+	\[
+		G/N \cong \phi(G)/\phi(N)\]
 \end{theorem}
+\begin{proof}
+	For any $\phi(g) \in \phi(G)$, $\phi(g)\phi(N)(\phi(G))^{-1} = \phi(gNg^{-1}) = \phi(N)$. Hence, $\phi(N)$ is normal.
+	
+	Define $f: G/N \to \phi(G) / \phi(N)$ by $f(gN) = \phi(g)\phi(N)$. 
+
+	\begin{itemize}
+		\item $f$ is well-defined. If $g = g'n, n \in N$, then $\phi(g)\phi(N) = \phi(g')\phi(n)\phi(N) = \phi(g')\phi(N)$.
+		\item Can verify $f$ is homomorphism, injective. It's obvious $f$ is surjective.
+	\end{itemize}
+	Thus, $f$ is isomorphism.
+\end{proof}
 
 \begin{theorem}
 	[The second homomorphism theorem] Let $G$ be a group, and let $A \leq G$ be a subgroup and $B \unlhd G$ a normal subgroup. Then $AB$ is a subgroup of G, $B \unlhd AB, A\cap B \unlhd A$, and 
@@ -445,10 +478,22 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 	forms a group. It's a subgroup of $S_G$.
 \end{definition}
 
+\begin{definition}
+	[Inner automorphism] 
+	\[Inn(G) := \{Ad_g: g\in G\}\]
+\end{definition}
+\begin{proposition}
+	\[Inn(G) \unlhd Aut(G)\]
+\end{proposition}
+\begin{proof}
+	note that $\sigma Ad_g \sigma^{-1} = Ad_{\sigma(g)} $.
+\end{proof}
+
 \subsection{semi-direct products}
 
 \section{Stabilizers, orbits of group actions, class equations}
 \subsection{Stabilizers and orbits of group actions}
+
 \begin{definition}
 	Let $G$ be a group acting on a set $X$. For each $x \in X$,
 	\begin{itemize}
@@ -491,6 +536,13 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \end{proposition}
 \begin{proof}
 	$\ker (Ad) = \{g | Ad_g = id\}$	
+\end{proof}
+
+\begin{proposition}
+	$G/Z(G) \cong Inn(G)$	
+\end{proposition}
+\begin{proof}
+	Could be directly implied by Proposition 1.7.2 and fundamental homomorphism theorem.
 \end{proof}
 
 \begin{definition}
@@ -544,6 +596,9 @@ The following lemmas tells when $HK$ is a (normal) subgroup.
 \begin{proposition}
 	For a non-trivial $p$-group, $Z(G)$ is nontrivial. 
 \end{proposition}
+% \begin{proof}
+% 	By (2) in Theorem 1.7.6, $p$ divides $|Z(G)|$.
+% \end{proof}
 
 \section{Sylow's Theorem}
 \begin{definition}
@@ -674,11 +729,88 @@ We also use group action to prove the second Sylow Theorem.
 
 \subsection{Applications of Sylow's theorem}
 
+\section{Exercises}
+
+\begin{proposition}
+	Define $End(G) := Hom(G, G)$. Prove that $End(\mathbb{Z}_n) \cong \mathbb{Z}_n$. Consider $f_p : x \mapsto px$ under modulo operation.
+\end{proposition}
+
+\begin{proposition}
+	$N \le G$, $[G : N] = 2$, then $N \unlhd G$.
+\end{proposition}
+
+\begin{proposition}
+	$|G| = pm$, where $p$ is prime and $m < p$. Prove that any $p$-ordered subgroup of $G$ is normal. In fact, by the third Sylow's Theorem, $G$ has a unique Sylow-$p$ subgroup, which is normal.
+\end{proposition}
+
+\begin{proof}
+	[hint] Let $H \le G, |H|=p$, we assert $xHx^{-1} = H$. If not, use Lagrange's Theorem to show that $H \cap xHx^{-1} = e$. By Theorem 1.6.1, we know $|HK| = p^2 > |G|$.
+\end{proof}
+
+%%% -------------------------
+%%%  chapter{Rings and Ideals}
+%%%
+\chapterimage{skybox_resized.png} % Chapter heading image
+\chapter{Rings and Fields}
+\begin{definition}
+	[ring] $(R,+,\cdot)$ is called a ring if 
+	\begin{enumerate}
+		\item $(R, +)$ is an abelian group.
+		\item $(R, \cdot)$ is a semigroup.
+		\item left and right distributivity law of $\cdot$ over $+$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	[commutative ring, 幺环, zero-divisor, integral domain, division ring]
+\end{definition}
+
+\begin{definition}
+	[field] A commutative ring $R$ with an identity element such that $R^{\times}$ is a group under $\cdot$.
+\end{definition}
+
+\begin{theorem}
+	A non-trivial finite ring without zero divisor is a division ring.
+\end{theorem}
+
+\begin{corollary}
+	A finite integral domain is a field.	
+\end{corollary}
+
+\begin{definition}
+	[characteristic of a ring without zero divisor]
+\end{definition}
+
+\begin{definition}
+	[left(right) ideal] Let $R$ be a ring, $I \subseteq R$ and $(I, +)$ is a subgroup of $(R, +)$. 
+	If $RI \subseteq I$, then $I$ is called a left ideal; If $IR \subseteq I$, then $I$ is called a right ideal.
+	If $I$ is both a left and right ideal, then $I$ is called an ideal.
+\end{definition}
+
+\begin{definition}
+	[generated ideal] Let $R$ be a ring, $\emptyset \neq T \subseteq R$, define $\langle T\rangle = \cap \{I : T \subseteq I, I \text{ is an ideal of } R\} $.
+	When $T = \{a\}$, we use $\langle a \rangle$ to denote the {\bf principal ideal} generated by $a$.
+\end{definition}
+
+\begin{theorem}
+	$R$ is a ring, then 
+	\[
+		\langle a \rangle = \{\sum_i x_i a y_i + sa + at + n\cdot a : \forall x_i,y_i,s,t \in R, n\in \mathbb{Z}\}\]
+\end{theorem}
+
+\begin{corollary}
+	Let $R$ be a ring,
+	\begin{itemize}
+		\item when $R$ is commutative, $\langle a \rangle = \{sa + na : s\in R, n \in \mathbb{Z}\}$.
+		\item when $R$ contains $1$, $\langle a \rangle = \{\sum_i x_iay_i\}$.
+		\item when $R$ contains $1$ and is commutative, $\langle a \rangle = Ra$.
+	\end{itemize}
+\end{corollary}
 %%% -------------------------
 %%%  chapter{Rings and Ideals}
 %%%
 \chapterimage{destiny2_resized.jpg} % Chapter heading image
-\chapter{Rings and Ideals}
+\chapter{Communitative Rings and Ideals}
 If not pointed out specifically, the notion "ring" refers to a commutative ring with an identity element. 
 
 \section{rings, ideals, quotient rings}
