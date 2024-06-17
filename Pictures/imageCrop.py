@@ -27,4 +27,4 @@ def resize_image(image_path1, image_path2):
     print(f"图片已保存为 {new_image_path}")
 
 # 使用示例
-resize_image('./head1.png', './skybox.png')
+resize_image('./head1.png', './shore.jpg')

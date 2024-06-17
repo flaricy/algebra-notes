@@ -27,26 +27,31 @@
 \contentsline {chapter}{\numberline {2}Rings and Fields}{21}{chapter.2}%
 \ttl@stoptoc {default@1}
 \ttl@starttoc {default@2}
-\contentsline {chapter}{\numberline {3}Communitative Rings and Ideals}{23}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Field Extensions}{23}{chapter.3}%
 \ttl@stoptoc {default@2}
 \ttl@starttoc {default@3}
-\contentsline {section}{\numberline {3.1}rings, ideals, quotient rings}{23}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Chinese Remainder Theorem}{24}{section.3.2}%
-\contentsline {section}{\numberline {3.3}zero-divisors, nilpotent elements, units}{24}{section.3.3}%
-\contentsline {section}{\numberline {3.4}prime ideals and maximal ideals}{25}{section.3.4}%
-\contentsline {section}{\numberline {3.5}nilradical and Jacobson radical}{27}{section.3.5}%
-\contentsline {section}{\numberline {3.6}operations on ideals}{27}{section.3.6}%
-\contentsline {section}{\numberline {3.7}extension and contraction}{29}{section.3.7}%
-\contentsline {section}{\numberline {3.8}polynomial rings}{29}{section.3.8}%
-\contentsline {chapter}{\numberline {4}Module Theory}{31}{chapter.4}%
+\contentsline {section}{\numberline {3.1}Field extensions}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}construction of field extensions}{24}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Communitative Rings and Ideals}{25}{chapter.4}%
 \ttl@stoptoc {default@3}
 \ttl@starttoc {default@4}
-\contentsline {section}{\numberline {4.1}modules and module homomorphisms}{31}{section.4.1}%
-\contentsline {section}{\numberline {4.2}submodules and quotient modules}{32}{section.4.2}%
-\contentsline {section}{\numberline {4.3}operations on submodules}{32}{section.4.3}%
-\contentsline {section}{\numberline {4.4}direct sum and product}{32}{section.4.4}%
-\contentsline {section}{\numberline {4.5}finitely generated modules}{32}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Introduction to Homology}{35}{chapter.5}%
+\contentsline {section}{\numberline {4.1}rings, ideals, quotient rings}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Chinese Remainder Theorem}{26}{section.4.2}%
+\contentsline {section}{\numberline {4.3}zero-divisors, nilpotent elements, units}{26}{section.4.3}%
+\contentsline {section}{\numberline {4.4}prime ideals and maximal ideals}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}nilradical and Jacobson radical}{29}{section.4.5}%
+\contentsline {section}{\numberline {4.6}operations on ideals}{29}{section.4.6}%
+\contentsline {section}{\numberline {4.7}extension and contraction}{31}{section.4.7}%
+\contentsline {section}{\numberline {4.8}polynomial rings}{31}{section.4.8}%
+\contentsline {chapter}{\numberline {5}Module Theory}{33}{chapter.5}%
 \ttl@stoptoc {default@4}
 \ttl@starttoc {default@5}
+\contentsline {section}{\numberline {5.1}modules and module homomorphisms}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}submodules and quotient modules}{34}{section.5.2}%
+\contentsline {section}{\numberline {5.3}operations on submodules}{34}{section.5.3}%
+\contentsline {section}{\numberline {5.4}direct sum and product}{34}{section.5.4}%
+\contentsline {section}{\numberline {5.5}finitely generated modules}{34}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Introduction to Homology}{37}{chapter.6}%
+\ttl@stoptoc {default@5}
+\ttl@starttoc {default@6}
 \contentsfinish 

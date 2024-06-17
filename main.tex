@@ -761,6 +761,7 @@ We also use group action to prove the second Sylow Theorem.
 	\end{enumerate}
 \end{definition}
 
+
 \begin{definition}
 	[commutative ring, 幺环, zero-divisor, integral domain, division ring]
 \end{definition}
@@ -806,6 +807,59 @@ We also use group action to prove the second Sylow Theorem.
 		\item when $R$ contains $1$ and is commutative, $\langle a \rangle = Ra$.
 	\end{itemize}
 \end{corollary}
+
+%%% -------------------------
+%%%  chapter{Rings and Ideals}
+%%%
+\chapterimage{shore_resized.jpg} % Chapter heading image
+\chapter{Field Extensions}
+\begin{definition}
+	The {\bf characteristic} of a field $F$, denoted by $char(F)$, is 
+	\begin{itemize}
+		\item the smallest positive integer $p$, such that $p\cdot 1 = 0$, if such $p$ (must be prime) exists, 
+		\item $0$, otherwise.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	The {\bf prime field} of a field $F$ is the smallest field of $F$ containing $1_F$. It is isomorphic to
+	\begin{itemize}
+		\item $\mathbb{F}_p$, if char($F$) $=p > 0$
+		\item $\mathbb{Q}$, if $char(F) = 0$. 
+	\end{itemize}
+\end{definition}
+
+\section{Field extensions}
+
+\begin{definition}
+	If $F \subseteq K$ is a subfield of a field, we say $K$ is a field extension of $F$. $F$ is the base field. 
+
+	Any field that sits as $F \subseteq E \subseteq K$ is called {\bf intermediate fields}. We often write $K/E/F$ (reads $k$ over $E$ and over $F$), or draw as 
+	\[\begin{tikzcd}
+		K \\
+		E \\
+		F
+		\arrow[no head, from=1-1, to=2-1]
+		\arrow[no head, from=2-1, to=3-1]
+	\end{tikzcd}\]
+
+	Note also that $F \subseteq K$ makes $K$ an $F-$vector space.
+\end{definition}
+
+\begin{definition}
+	The {\bf degree} of the field extension $K$ of $F$ is $[K : F] = dim_F K$. The extension is {\bf finite/infinite} if $[K : F]$ is.
+\end{definition}
+
+\begin{theorem}
+	Let $K/E/F$ be field extensions. Then $[K:F] = [K:E][E:F]$.
+\end{theorem}
+\begin{proof}
+	Use basis to construct.	
+\end{proof}
+
+\section{construction of field extensions}
+
+
 %%% -------------------------
 %%%  chapter{Rings and Ideals}
 %%%
@@ -1540,6 +1594,6 @@ Let $(M_i)_{i\in I}$ be a family of submodules of $M$.
 	By Proposition 4.0.1.
 \end{proof}
 
-\
+
 \end{CJK}
 \end{document}
